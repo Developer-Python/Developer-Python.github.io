@@ -90,10 +90,7 @@ $(document).ready(function(){
         $(".s_main_box").append(two_slide)
         $(".s_main_box").append(three_slide)
         $(".s_main_box").append(four_slide)
-
-        // Анимация: смена слайда
-        $('.s_box').fadeIn('fast','linear');
-
+        
       }
 
 
