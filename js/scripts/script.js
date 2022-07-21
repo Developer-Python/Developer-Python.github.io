@@ -11,11 +11,11 @@ $(document).ready(function(){
 
 
     // Авто-прокрутка слайда
-    // setInterval( () => {
-    //     seconds = seconds - 1;
-    //     if(!seconds){seconds = 6;}
-    //       slide_switch('right')
-    //     }, 6000)
+    setInterval( () => {
+        seconds = seconds - 1;
+        if(!seconds){seconds = 6;}
+          slide_switch('right')
+        }, 6000)
 
 
 
