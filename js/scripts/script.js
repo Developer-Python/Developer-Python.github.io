@@ -20,7 +20,7 @@ $(document).ready(function(){
     var computer_version_page = $('html').width() > 1101;  // Вкл/Выкл версию если размер (дисплея) > (значение)
     var height_slide_max = [];                             // Массив со значениями высоты блоков '.s_box'
     var count_clide = 0;                                   // Счётчик для переключения слайдов
-    var levour = 1
+    var lever = 1                                          // [1] это вправо до конца / [0] это влево до конца
 
 // ----------------------------------------- ФУНКЦИИ --------------------------------------------------------------------- #
 
@@ -39,12 +39,12 @@ $(document).ready(function(){
     // Авто-прокрутка слайда
     function auto_slide_switch() {
 
-      if (count_clide < backgroud_slide_lenght && levour == 1) {
+      if (count_clide < backgroud_slide_lenght && lever == 1) {
         count_clide+=1
         switch_slide(array_slides, 'right')   
         switch_loading('right') 
         if (count_clide == backgroud_slide_lenght) {
-          levour = 0
+          lever = 0
         }
 
       } else {
@@ -55,7 +55,7 @@ $(document).ready(function(){
         switch_loading('left')  
 
         if (count_clide == 0) {
-          levour = 1
+          lever = 1
         }
 
       }
@@ -197,7 +197,7 @@ $(document).ready(function(){
 
         count_one+=1
 
-        rebuild_page()    // Запуск функций <----
+        rebuild_page()    
    
       }
     }
@@ -213,6 +213,9 @@ $(document).ready(function(){
     max_count = Math.max.apply(null, height_slide_max) + 42
 
 
+    
+    
+    
 // ------------------------------------ ОБРАБОТКА СОБЫТИЙ ---------------------------------------------------------------- #
 
 
