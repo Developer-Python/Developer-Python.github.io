@@ -1,160 +1,263 @@
+
+// Чтение всего html документа
 $(document).ready(function(){
 
-  
+
+
+
+
+// ------------------------------------ НАСТРОЙКА ПАРАМЕТРОВ ------------------------------------------------------------ #
 
     // Переменные
-    var array_box = ['#s_box_one', '#s_box_two', '#s_box_three', '#s_box_four'];
-    var new_array = [];
-    var margin = 0;
-    var seconds = 6;
+    var count_two;                                         // Счётчик для определения последовательности слайдов по порядку
+    var backgroud_slide_lenght;                            // Кол-во слайдов в фоне
 
+    var margin = 0;                                        // На сколько "px" двигать полоску после каждого нажатия
+    var seconds = 6;                                       // Через сколько переключать слайд (секунды)
+    var count_one = 0;                                     // Первый счётчик
+    var array_slides = $(".s_box");                        // Массив со всеми слайдами
+    var array_lenght = array_slides.length;                // Кол-во слайдов
+    var computer_version_page = $('html').width() > 1101;  // Вкл/Выкл версию если размер (дисплея) > (значение)
+    var height_slide_max = [];                             // Массив со значениями высоты блоков '.s_box'
+    var count_clide = 0;                                   // Счётчик для переключения слайдов
+    var levour = 1
+
+// ----------------------------------------- ФУНКЦИИ --------------------------------------------------------------------- #
+
+
+
+
+
+    // Перестройка страницы под один слайд
+    function rebuild_page() {
+      $('.s_main_box').after($('.s_main_loading'))
+      $('#s_button_one').after($('.s_box_loading'))
+      $('.s_box_next_slide_right').removeClass('unvisible')
+    }
 
 
     // Авто-прокрутка слайда
-    // setInterval( () => {
-    //     seconds = seconds - 1;
-    //     if(!seconds){seconds = 6;}
-    //       slide_switch('right')
-    //     }, 6000)
+    function auto_slide_switch() {
 
-
-
-    // Функция: Слайдер
-    function slide_switch(button) {
-
-      // IF: Ожидаем пока пользователь нажмёт на правую кнопку
-      if (button == 'right') {
-
-        // Алгоритм правельного положения слайдов при пролистований 
-        for (let i = 0; i < 4; i++){ 
-          
-          // Отправляем третий элемент в начало массива
-          if (i == 3) {
-            new_array.unshift(array_box[i]) 
-          }
-
-          // Отправляем остальные элементы в конец массива
-          if (i <= 2) {
-            new_array.push(array_box[i])
-          }
-          
-        };
-
-        // Перезапись массива
-        array_box = new_array
-
-        // Очистка массива
-        new_array = []
-
-      }
-
-      // IF: Ожидаем пока пользователь нажмёт на левую кнопку
-      else if (button == 'left') {
-
-        // Индекс элемента, который надо перенести в конец
-        const fromIndex = 0;
-
-        // Получаем элемент, который надо перенести и удаляем его из массива
-        const item = array_box.splice(fromIndex, 1)[0]; 
-
-        // Добавляем элемент в конец
-        array_box.splice(array_box.length, 1, item); 
-
-        // Очистка массива
-        new_array = []
-
-      }
-
-
-
-      // Функция: клонирования удаления и добавления элементов в DOM
-      function clone_remove_append(slides) {
-
-        // Сохраняем первые слайды в отдельные переменные что-бы подготовить алгоритм
-        one_slide = $(array_box[0]).clone()
-        two_slide = $(array_box[1]).clone()
-        three_slide = $(array_box[2]).clone()
-        four_slide = $(array_box[3]).clone()
-        
-        // Анимация(появление / исчезание)
-        $('.s_main_box').fadeOut('fast','linear');
-        $('.s_main_box').fadeIn('fast','linear');
-
-        // Удаление слайдов
-        for (let i=0; i<4; i++) {
-          $(slides[i]).remove()
+      if (count_clide < backgroud_slide_lenght && levour == 1) {
+        count_clide+=1
+        switch_slide(array_slides, 'right')   
+        switch_loading('right') 
+        if (count_clide == backgroud_slide_lenght) {
+          levour = 0
         }
 
-        // Добавление слайдов в нужной последовательности
-        $(".s_main_box").append(one_slide)
-        $(".s_main_box").append(two_slide)
-        $(".s_main_box").append(three_slide)
-        $(".s_main_box").append(four_slide)
+      } else {
 
-        // Анимация: смена слайда
-        $('.s_box').fadeIn('fast','linear');
+        count_clide-=1
 
-      }
+        switch_slide(array_slides, 'left')    
+        switch_loading('left')  
 
-
-      // Запуск функций 
-      clone_remove_append(['#s_box_one', '#s_box_two', '#s_box_three', '#s_box_four'])
-
-    };
-
-
-
-    // Функция: алгоритм полоски при смене слайда
-    function loading_switch(button) {
-      
-      // IF: Ожидаем пока пользователь нажмёт на левую кнопку
-      if (button == 'left'){
-        
-        // Делим ширину элемента ".s_loading"
-        margin -= $('.s_loading').width() / 4.8
-        $(".s_loading_line").attr('style', `margin: -1px ${margin}px;`)
+        if (count_clide == 0) {
+          levour = 1
+        }
 
       }
+    }
 
-      // IF: Ожидаем пока пользователь нажмёт на правую кнопку
-      if (button == 'right') {
-        
-        // Делим ширину элемента ".s_loading"
-        margin += $('.s_loading').width() / 4.8
-        $(".s_loading_line").attr('style', `margin: -1px ${margin}px;`)
-      
+
+    // Переключение слайдов: Компьютер / Смартфон
+    function switch_slide(array, button) {
+      if (computer_version_page) {
+        if (button == 'right') {
+          count_two+=1
+          $(array[count_two-4]).attr('style', 'display:none;')
+          $(array[count_two]).attr('style', `display:inline-block; min-height:${max_count}px !important;`)
+        }
+        if (button == 'left') {
+          $(array[count_two-4]).attr('style', `display:inline-block; min-height:${max_count}px !important;`)
+          $(array[count_two]).attr('style', 'display:none;')
+          count_two-=1
+        }
       }
-      
+
+      else 
+
+      {
+
+        if (button == 'right') {
+
+            count_two+=1   
+
+            if ( count_two == 0 ) {
+              $('.s_box_next_slide_left').addClass('unvisible')
+            } else {
+              $('.s_box_next_slide_left').removeClass('unvisible')
+            }
+
+            if ( count_two == array_slides.length-1 ) {
+              $('.s_box_next_slide_right').addClass('unvisible')
+            } else {
+              $('.s_box_next_slide_right').removeClass('unvisible')
+            }
+
+            $(array[count_two-1]).attr('style', 'display:none;') 
+            $(array[count_two]).attr('style', `display:inline-block; min-height:${max_count}px !important;`)
+
+            $(`#${count_two}`).before($('.s_box_next_slide_left'))
+            $(`#${count_two}`).after($('.s_box_next_slide_right'))
+
+          } 
+
+        if (button == 'left') {
+
+            if (count_two==1) {
+              $('.s_box_next_slide_left').addClass('unvisible')
+            } else {
+              $('.s_box_next_slide_left').removeClass('unvisible')
+            }
+
+            if (count_two==array_lenght) {
+              $('.s_box_next_slide_right').addClass('unvisible')
+            } else {
+              $('.s_box_next_slide_right').removeClass('unvisible')
+            }
+
+            $(array[count_two-1]).attr('style', `display:inline-block; min-height:${max_count}px !important;`)
+            $(array[count_two]).attr('style', 'display:none;')
+
+            $(`#${count_two-1}`).after($('.s_box_next_slide_right'))
+            $(`#${count_two-1}`).before($('.s_box_next_slide_left'))
+
+            count_two-=1
+        }
+      }
     }
 
 
 
+
+
+    // Алгоритм полоски при смене слайда
+    function switch_loading(button) {
+      
+      // Ожидаем пока пользователь нажмёт на левую кнопку
+      if (button == 'left') {
+        
+        // Делим ширину элемента ".s_loading"
+        margin -= (($('.s_loading').width()) - ($('.s_loading_line').width())) / backgroud_slide_lenght
+
+        $(".s_loading_line").attr('style', `margin: -1px ${margin}px;`)
+
+      }
+
+      // Ожидаем пока пользователь нажмёт на правую кнопку
+      if (button == 'right') {
+        
+        // Делим ширину элемента ".s_loading"
+        margin += ( ($('.s_loading').width()) - ($('.s_loading_line').width()) ) / backgroud_slide_lenght
+        $(".s_loading_line").attr('style', `margin: -1px ${margin}px;`)
+      
+      } 
+    }
+
+
+
+
+
+// -------------------------------------- ПОДГОТОВКА ДАННЫХ -------------------------------------------------------------- #
+    
+    // Подготовка слайдов(а)
+    for(var i=0; i<array_lenght; ++i) {
+
+      if (computer_version_page) {
+
+        var count_two = 3
+
+        $('.s_box_next_slide_right').addClass('disable_physics')
+
+        $(array_slides[i]).attr('id', i)
+
+        if (i > 3) {
+          $(array_slides[i]).attr('style', 'display:none;')
+          
+          count_one-=1
+        }
+
+        count_one+=1
+
+      }
+
+      else {
+
+        var count_two = 0
+
+        $(array_slides[i]).attr('id', i)
+
+        if (i > 0) {
+          $(array_slides[i]).attr('style', 'display:none;')
+          count_one-=1 
+        }
+
+        count_one+=1
+
+        rebuild_page()    // Запуск функций <----
+   
+      }
+    }
+
+    backgroud_slide_lenght = array_slides.length - count_one
+
+    // Добавляем размеры высоты всех слайдов
+    for (var i=0; i<array_lenght; i++){
+        height_slide_max.push(Math.round( $(array_slides[i]).height() ))
+    }
+ 
+    // Узнаём максимальную высоту каждого слайда чтобы выравнить все слайды
+    max_count = Math.max.apply(null, height_slide_max) + 42
+
+
+// ------------------------------------ ОБРАБОТКА СОБЫТИЙ ---------------------------------------------------------------- #
+
+
     // Ожидание нажатия на левая кнопку слайдера
     $( "#s_button_one" ).click(function() { 
+      
+      if (0 < count_clide) {
 
-      if (margin > 1 ) {
-        
-        loading_switch('left')
-        slide_switch('left')
+        count_clide-=1
+
+        switch_slide(array_slides, 'left')    
+        switch_loading('left')               
+
       }
 
     });
 
-
+    
 
     // Ожидание нажатия на правую кнопку слайдера
     $( "#s_button_two" ).click(function() {
 
-      // Узнаём ширину элемента ".s_loading"
-      // Вычитаем "100px" что-бы не было 5-той прокрутки
-      if (margin < $('.s_loading').width()-100) {
+      if (count_clide < backgroud_slide_lenght) {
 
-        loading_switch('right')
-        slide_switch('right')
+        count_clide+=1
+
+        switch_slide(array_slides, 'right')   
+        switch_loading('right')               
+
       }
 
     });
+    
+
+
+    // Авто-прокрутка слайда
+    setInterval( () => {
+
+      seconds = seconds - 1;
+      if(!seconds){seconds = 6;}
+      auto_slide_switch()
+
+      }, seconds+'000')
 
 
 
+    
 });

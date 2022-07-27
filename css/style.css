@@ -1,4 +1,5 @@
 
+
 /*_________________________________________________*/
 /*                                                 */
 /*     ".s_" - это сокращение от slider            */
@@ -6,394 +7,571 @@
 
 
 
-/*  Теги  */
-body {
-    background: #F3F3F3 !important;
-}
 
+/* #----------------------------------------------------------------------------------------------------------------# */
+
+
+/*__________________________________________________*/
+/*                                                  */
+/*                  "Общие стили"                   */
+/*__________________________________________________*/       
+
+
+/*  Теги  */
+html, body {
+	background: #F3F3F3 !important;
+	overflow-x: hidden;
+}
 
 
 /*  Классы  */
+
+.disable_physics {
+	display: none !important;
+}
+
+.unvisible {
+	opacity: 0 !important;
+}
+
+.s_main_box_menu {
+	margin-top: 120px !important;
+	text-align: center !important;
+}
+
 .s_box {
-    width: 20% !important;
-    margin: 20px;
-    padding: 20px 20px !important;
-    box-sizing: border-box;
-    border: 1px solid #C8D9FB;
+	width: 18.6% !important;
+	margin: 20px;
+	padding: 20px 20px !important;
+	box-sizing: border-box;
+	border: 1px solid #C8D9FB;
 }
 
 .s_box:hover {
-    border: 1px solid #527CCD;
-    transition-duration: 0.5s;
+	border: 1px solid #527CCD;
+	transition-duration: 0.5s;
 }
 
 .s_photo {
-    margin: 0px 0px 10px 0px;
-    width: 220px;
-    height: 160px;
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
+	width: 220px;
+	max-width: 100%;
+	max-height: 100%;
+	min-height: 100%;
+	min-width: 100%;
 }
 
 .s_text_date {
-    margin: 0px 0px 10px 0px;
-    width: 220px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 22px;
-    max-width: 100%;
-    max-height: 100%;
-    color: #527CCD;
-    opacity: 0.6;
+	margin: 0px 0px 10px 0px;
+	width: 220px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 22px;
+	max-width: 100%;
+	max-height: 100%;
+	color: #527CCD;
+	opacity: 0.6;
 }
 
 .s_text_title {
-    margin: 0px 0px 10px 0px;
-    height: 78px;
-    width: 220px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 26px;
-    max-width: 100%;
-    max-height: 100%;
-    color: #527CCD;
+	min-height: 85px;
+	width: auto;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+	max-width: 100%;
+	max-height: 100%;
+	color: #527CCD;
 }
 
 .s_text_description {
-    width: 220px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 22px;
-    max-width: 100%;
-    max-height: 100%;
-    color: #527CCD;
+	width: auto;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 22px;
+	height: auto;
+	max-width: 100%;
+	color: #527CCD;
 }
 
 .tracker {
-    display: none;
+	display: none;
 }
 
 .s_main_box {
-    justify-content: center;
+	justify-content: center;
 }
 
 .s_title {
-    color: #527CCD;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 50px;
-    line-height: 60px;
-    display: inline-block;
-    margin: 0px 318px 0px 62px;
+	color: #527CCD;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 50px;
+	line-height: 60px;
+	display: inline-block;
+	margin: 0px 318px 0px 62px;
 }
 
 .s_loading {
-    width: 360px;
-    height: 0px;
-    display: inline-block;
-    border: 1px solid #C8D9FB;
-    background: #C8D9FB;
-    margin: 10px 0px;
+	height: 0px;
+	display: inline-block;
+	border: 1px solid #C8D9FB;
+	background: #C8D9FB;
+	text-align: left;
 }
 
 .s_loading_line {
-    position: absolute;
-    display: inline-block;
-    width: 60px;
-    height: 0px;
-    display: inline-block;
-    border: 1px solid #527CCD;
-    background: #527CCD;
-    margin: -1px 0px;
+	position: absolute;
+	display: inline-block;
+	width: 60px;
+	height: 0px;
+	display: inline-block;
+	border: 1px solid #527CCD;
+	background: #527CCD;
+	margin: -1px 0px;
 }
 
 .s_button:hover {
-    background-color: #C8D9FB;
-    transition-duration: 0.3s;
+	background-color: #C8D9FB;
+	transition-duration: 0.3s;
 }
 
 .s_box_button {
-
-    display: inline-block;
-    margin: 40px 0px 40px 15px;
+	display: inline-block;
+	margin: 40px 0px 40px 15px;
 }
 
 .s_main_title {
-    margin-top: 120px;
+	margin-top: 120px;
 }
 
 .s_button_left {
-    background: none;
-    pointer-events: painted;
-    text-align: center;
-    width: 60px;
-    height: 60px;
-    padding: 10px 12px 10px 8px;
-    display: inline-block;
-    border: 1px solid #C8D9FB;
-    font-size: 20px;
-    color: #527CCD;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 26px;
-    font-family: 'Nanum Myeongjo', serif;
-    margin: 0px 20px;
+	background: none;
+	pointer-events: painted;
+	text-align: center;
+	width: 60px;
+	height: 60px;
+	padding: 10px 12px 10px 8px;
+	display: inline-block;
+	border: 1px solid #C8D9FB;
+	font-size: 20px;
+	color: #527CCD;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 26px;
+	font-family: 'Nanum Myeongjo', serif;
+	margin: 0px 20px;
 }
 
 .s_button_right {
-    background: none;
-    pointer-events:painted;
-    text-align: center;
-    width: 60px;
-    height: 60px;
-    padding: 10px 8px 10px 13px;
-    display: inline-block;
-    border: 1px solid #C8D9FB;
-    font-size: 20px;
-    color: #527CCD;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 26px;
-    font-family: 'Nanum Myeongjo', serif;
-    margin: 0px 20px;
+	background: none;
+	pointer-events: painted;
+	text-align: center;
+	width: 60px;
+	height: 60px;
+	padding: 10px 8px 10px 13px;
+	display: inline-block;
+	border: 1px solid #C8D9FB;
+	font-size: 20px;
+	color: #527CCD;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 26px;
+	font-family: 'Nanum Myeongjo', serif;
+	margin: 0px 20px;
 }
 
 .s_button_left:hover {
-    background-color: #C8D9FB;
-    transition-duration: 0.3s;
+	background-color: #C8D9FB;
+	transition-duration: 0.3s;
 }
 
 .s_button_right:hover {
-    background-color: #C8D9FB;
-    transition-duration: 0.3s;
+	background-color: #C8D9FB;
+	transition-duration: 0.3s;
 }
+
+.s_box_next_slide_right {
+    width: 9% !important;
+    box-sizing: border-box;
+    border: 1px solid #C8D9FB;
+    position: relative;
+    left: 2%;
+    padding: 0% 9px;
+    height: auto;
+    margin-bottom: 20px;
+    margin-right: -13.4%;
+}
+
+.s_box_next_slide_left {
+	width: 7% !important;
+    box-sizing: border-box;
+    border: 1px solid #C8D9FB;
+    position: relative;
+    left: -14.3%;
+    padding: 0% 9px;
+    height: auto;
+    margin-bottom: 20px;
+    margin-right: -12.4%;
+}
+
+.s_box_loading {
+	margin: 0px 71px -24px;
+}
+
+
 
 
 
 /*___________________________________________________________*/
 /*                                                           */
-/*        "Адаптация под различные разрешения дисплея"       */
+/*          Адаптация под различные разрешения дисплея       */
+/*                    "смартфон-планшет"                     */
+/*___________________________________________________________*/
+
+
+
+/*                                              */
+/*   Общие стили от [смартфона] до [планшета]   */
+/*                                              */
+@media (max-width: 1100px) and (min-width: 100px) {
+
+	.s_title {
+		display: inline-block;
+		min-height: 85px;
+		vertical-align: sub;
+		font-size: 40px;
+		text-align: left;
+		margin: 0px 315px 0px 11px;
+	}
+
+	.s_photo {
+		margin: 0px 0px 10px 0px;
+		width: 220px;
+		height: auto;
+		min-height: 100%;
+		min-width: 100%;
+		display: block;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.s_loading {
+		width: 100%;
+		margin: 0px 0px -10px 0px;
+	}
+
+	.s_box {
+		min-width: 88%;
+		margin: 20px 0px;
+		height: auto;
+	}
+
+	.s_main_box {
+		height: auto;
+	}
+
+	.s_main_loading {
+		justify-content: center;
+	}
+
+	.s_loading_line {
+		position: unset;
+		width: 36px;
+		margin: -1px 0px;
+		display: flex;
+	}
+
+	.s_button_left {
+		float: left;
+		width: 50px;
+		height: 50px;
+		padding: 6px 12px 10px 8px;
+		margin: 0px 20px 20px 0px ;
+	}
+
+	.s_button_right {
+		float: right;
+		width: 50px;
+		height: 50px;
+		padding: 6px 12px 10px 16px;
+		margin: 0px 0px 20px 20px ;
+	}
+
+	.s_box_loading {
+		margin: 0px 0px -23px !important;
+		width: 100% !important;
+		padding: 0px 70px !important;
+	}
+}
+
+/*  Выравнивание: по ширине 281х100  */
+@media (max-width: 281px) and (min-width: 100px) {
+
+	.s_box_button {
+		width: 100% !important;
+		padding: 0px 1% 0 2.5% !important;
+		margin: 0px;
+	}
+	
+	.s_button_left {
+		float: left;
+		width: 50px;
+		height: 50px;
+		width: 50px;
+
+	}
+
+	.s_button_right {
+		float: right;
+		width: 50px;
+		width: 50px;
+		height: 50px;
+	}
+
+}
+
+/*  Выравнивание: по ширине 420х281  */
+@media (max-width: 420px) and (min-width: 281px) {
+
+	.s_box_button {
+		width: 100% !important;
+		padding: 0px 0% 0 6% !important;
+		margin: 0% 0% 0% -3.5%;
+	}
+
+	
+}
+
+/*  Выравнивание: по ширине 620х421  */
+@media (max-width: 620px) and (min-width: 421px) {
+
+	.s_box_button {
+		width: 100% !important;
+		padding: 0px 2% 0px 5.2% !important;
+		margin: 0% 0% 0% -2%;
+	}
+
+	.s_title {
+		margin: 0px 0px 0px 4% !important;
+	}
+	
+}
+
+/*  Выравнивание: по ширине 820х621  */
+@media (max-width: 750px) and (min-width: 621px) {
+
+	.s_box_button {
+		width: 100% !important;
+		padding: 0px 1% 0 7.2% !important;
+		margin: 0% -5% 0% -2%;
+	}
+
+	.s_title {
+		margin: 0px 0px 0px 4.5% !important;
+	}
+
+
+}
+
+/*  Выравнивание: по ширине 1100х821  */
+@media (max-width: 1100px) and (min-width: 751px) {
+
+	.s_title {
+		margin: 0px 0px 0px 4.5% !important;
+	}
+
+	.s_box_button {
+		margin: 0% 0% 0% 3.5%;
+		width: 145% !important;
+		padding: 0px 6.5% 0 3% !important;
+	}
+
+}
+
+
+
+
+
 /*___________________________________________________________*/
 /*                                                           */
+/*        Адаптация под различные разрешения дисплея         */
+/*                 "Компьютер 2560x1100"                     */
+/*___________________________________________________________*/
 
 
+/*                                              				*/
+/*   Общие стили от [обычного] до [широко-экранного] дисплея  	*/
+/*                                             					*/
+@media (max-width: 2561px) and (min-width: 1101px) {
 
-/*   Смартфон   */
-@media (max-width: 415px) and (min-width: 359px) {
+	.s_box_next_slide_left {
+		width: 10% !important;
+	}
+	.s_box_button {
+		margin: -67px 3.4% 20px 0px;
+		float: right;
+	}
 
-    .s_main_title {
-        margin-top: 60px;
-    }
+	.s_box_loading {
+		width: 100%;
+		float: right;
+	}
 
-    .s_title {
-        font-size: 36px;
-        line-height: 60px;
-        margin: 0px 62px 0px 62px;
-    }
-
-    .s_button_left {
-        width: 35px;
-        height: 35px;
-        padding: 2px 10px 10px 7px;
-        font-size: 20px;
-        margin: 0px 17px;
-    }
-
-    .s_button_right {
-        width: 35px;
-        height: 35px;
-        padding: 2px 6px 10px 7px;
-        font-size: 20px;
-        margin: 0px 0px;
-    }
-
-    .s_loading {
-        
-        width: 100%;
-        height: 0px;
-        margin: 10px 0px;
-
-    }
-
-    .s_loading_line {
-        width: 15%;
-    }
-
-    .s_box {
-        width: 75% !important;
-    }
-
-    .s_box_button {
-        margin: 5% 0px 8% 4.5%;
-    }
+	.s_box_loading {
+		margin: 20px 234px 20px 605px;
+	}
 }
 
+/*  Выравнивание: по ширине 1200х1101  */
+@media (max-width: 1200px) and (min-width: 1101px) {
 
+	.s_title {
+		margin: 10px -11px 0px 62px;
+	}
 
-/*   Планшет   */
-@media (max-width: 840px) and (min-width: 520px) {
-
-    .s_loading {
-        width: 366px;
-        height: 0px;
-        margin: 10px 0px 0px 9%;
-    }
-
-    .s_loading_line {
-        width: 66px;
-    }
-    .s_box {
-        width: 37% !important;
-        margin: 5% 2.5%;
-    }
-    .s_box_button {
-        margin: 40px 0px 40px 2%;
-    }
-    
-    .s_title {
-        margin: 0px 62px 0px 62px;
-    }
+	.s_loading {
+		width: 92%;
+		margin: 10px 4px;
+		margin-left: 10%;
+	}
 }
 
-@media (max-width: 920px) and (min-width: 841px) {
+/*  Выравнивание: по ширине 1300х1200  */
+@media (max-width: 1300px) and (min-width: 1200px) {
 
-    .s_loading {
-        width: 366px;
-        height: 0px;
-        margin: 10px 0px 0px 9%;
-    }
 
-    .s_loading_line {
-        width: 66px;
-    }
+	.s_title {
+		margin: 10px -29px 0px 75px;
+	}
 
-    .s_box {
-        width: 37% !important;
-        margin: 5% 2.5%;
-    }
-
-    .s_box_button {
-        margin: 40px 0px 40px 2%;
-    }
-    
-    .s_title {
-        margin: 0px 62px 0px 62px;
-    }
+	.s_loading {
+		width: 96%;
+		margin: 10px 4px;
+		margin-left: 5%;
+	}
 }
 
+/*  Выравнивание: по ширине 1400х1300  */
+@media (max-width: 1400px) and (min-width: 1300px) {
 
+	.s_title {
+		margin: 10px -29px 0px 72px;
+	}
 
-/*   Компьютер с обычным дисплеем   */
-@media (max-width: 1281px) and (min-width: 1125px) {
-
-    .s_loading {
-        width: 28%;
-        margin: 6px 0px;
-    }
-
-    .s_box_button {
-        margin: 40px 0px 40px 1%;
-    }
-
-    .s_loading_line {
-       
-        width: 4.5%;
-        height: 0px;
-        margin: -1px 0px;
-    }
-    
-    .s_title {
-        display: inline-block;
-        height: 80px;
-        margin: 0% 22% 0% 4%;
-        vertical-align: sub;
-    }
-
-    .s_button_left {
-
-        width: 50px;
-        height: 50px;
-        padding: 10px 12px 10px 8px;
-        font-size: 20px;
-    }
-
-    .s_button_right {
-        width: 50px;
-        height: 50px;
-        padding: 10px 12px 10px 8px;
-        font-size: 20px;
-    }
-
-    .s_text_title {
-        line-height: 20px;
-    }
-
+	.s_loading {
+		width: 97%;
+		margin: 10px 4px;
+		margin-left: 3%;
+	}
 }
 
-@media (max-width: 1165px) and (min-width: 1024px) {
+/*  Выравнивание: по ширине 1500х1401  */
+@media (max-width: 1500px) and (min-width: 1401px) {
 
-    .s_title {
-        display: inline-block;
-        height: 80px;
-        margin: 0% 22% 0% 4%;
-        vertical-align: sub;
-        font-size: 42px;
-    }
 
-    .s_loading {
-        width: 29%;
-        margin: 4px 0px;
-    }
+	.s_title {
+		margin: 10px -29px 0px 72px;
+	}
 
-    .s_box_button {
-        margin: 40px 0px 40px 1%;
-    }
-
-    .s_button_left {
-        width: 35px;
-        height: 35px;
-        padding: 5px 12px 10px 9px;
-        font-size: 16px;
-    }
-
-    .s_button_right {
-        width: 35px !important;
-        height: 35px !important;
-        padding: 5px 12px 10px 13px;
-        font-size: 16px;
-    }
-
-    .s_text_title {
-        line-height: 20px;
-    }
-    
+	.s_loading {
+		width: 100%;
+		margin: 10px 4px;
+		margin-left: 0%;
+	}
 }
 
+/*  Выравнивание: по ширине 1600х1501  */
+@media (max-width: 1600px) and (min-width: 1501px) {
 
 
-/*   Компьютер с широкоэкранным дисплеем  */
-@media (max-width: 1920px) and (min-width: 1600px) {
+	.s_title {
+		margin: 12px -34px 0px 70px;
+	}
 
-    .s_box_button {
-        margin: 40px 0px 40px 1.5%;
-    }
+	.s_loading {
+		width: 103%;
+		margin: 10px 4px;
+		margin-left: -5%;
+	}
+}
 
-    .s_title {
-        margin: 0px 24% 0px 5%;
-    }
+/*  Выравнивание: по ширине 1700х1601  */
+@media (max-width: 1700px) and (min-width: 1601px) {
 
-    .s_loading_line {
-        width: 60px;
-    }
-    
-    .s_loading {
-        width: 360px;
-    }
+
+	.s_title {
+		margin: 12px -34px 0px 72px;
+	}
+
+	.s_loading {
+		width: 104%;
+		margin: 10px 4px;
+		margin-left: -6%;
+	}
+}
+
+/*  Выравнивание: по ширине 1800х1701  */
+@media (max-width: 1800px) and (min-width: 1701px) {
+
+
+	.s_title {
+		margin: 12px -37px 0px 69px;
+	}
+
+	.s_loading {
+		width: 105%;
+		margin: 10px 4px;
+		margin-left: -9%;
+	}
+}
+
+/*  Выравнивание: по ширине 1900х1801  */
+@media (max-width: 1900px) and (min-width: 1801px) {
+
+	.s_title {
+		margin: 12px -37px 0px 72px;
+	}
+
+	.s_loading {
+		width: 109%;
+		margin: 10px 4px;
+		margin-left: -12%;
+	}
+}
+
+/*  Выравнивание: по ширине 1920х1901  */
+@media (max-width: 2000px) and (min-width: 1901px) {
+
+	.s_title {
+		margin: 13px -40px 0px 68px;
+	}
+
+	.s_loading {
+		width: 109%;
+		margin: 10px 4px;
+		margin-left: -13%;
+	}
+}
+@media (max-width: 2561px) and (min-width: 2001px) {
+
+	.s_title {
+		margin: 13px -40px 0px 66px;
+	}
+
+	.s_box_button {
+		margin: -69px 4.7% 20px -1px;
+		float: right;
+	}
+
+	.s_loading {
+		width: 115%;
+		margin: 10px 4px;
+		margin-left: -29%;
+	}
 }
